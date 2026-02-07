@@ -144,6 +144,17 @@ export default function Index() {
       {/* Tiffin Subscription Section */}
       <section id="tiffin" className="w-full py-16 md:py-24 bg-green-pale">
         <div className="container mx-auto px-4">
+          {/* Tiffin Image Showcase */}
+          <div className="mb-12 md:mb-16">
+            <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src="https://images.pexels.com/photos/280453/pexels-photo-280453.jpeg"
+                alt="Fresh tiffin meal box with delicious prepared food"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-green-dark mb-4">
               Daily Tiffin Subscriptions
