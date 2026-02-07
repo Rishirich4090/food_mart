@@ -90,29 +90,35 @@ export default function Header() {
           <nav className="md:hidden pb-4 border-t border-green-pale">
             <div className="flex flex-col gap-2 pt-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
-                  className="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-green-pale rounded-lg transition-colors"
+                  to={link.href}
+                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    isActive(link.href)
+                      ? "bg-green-primary text-white font-bold"
+                      : "text-gray-700 hover:bg-green-pale"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-green-pale">
-                <Button
-                  variant="outline"
-                  className="border-green-primary text-green-primary hover:bg-green-pale w-full"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Order Groceries
-                </Button>
-                <Button
-                  className="bg-green-primary hover:bg-green-dark text-white w-full"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Subscribe Tiffin
-                </Button>
+                <Link to="/grocery" onClick={() => setIsMenuOpen(false)}>
+                  <Button
+                    variant="outline"
+                    className="border-green-primary text-green-primary hover:bg-green-pale w-full hover:scale-105 transition-transform"
+                  >
+                    Order Groceries
+                  </Button>
+                </Link>
+                <Link to="/tiffin-plans" onClick={() => setIsMenuOpen(false)}>
+                  <Button
+                    className="bg-green-primary hover:bg-green-dark text-white w-full hover:scale-105 transition-transform"
+                  >
+                    Subscribe Tiffin
+                  </Button>
+                </Link>
               </div>
             </div>
           </nav>
