@@ -261,12 +261,11 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left - Image */}
             <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-light to-green-primary flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-7xl mb-4">🛒</div>
-                  <p className="text-green-dark font-semibold text-lg">Fresh Groceries</p>
-                </div>
-              </div>
+              <img
+                src="https://images.pexels.com/photos/33975355/pexels-photo-33975355.jpeg"
+                alt="Fresh vegetables and fruits on grocery store shelves"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Right - Content */}
