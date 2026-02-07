@@ -1,20 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "Tiffin Plans", href: "#tiffin" },
-    { label: "Grocery", href: "#grocery" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "About Us", href: "#about" },
-    { label: "Partner With Us", href: "#partner" },
-    { label: "Contact", href: "#contact" },
+    { label: "Tiffin Plans", href: "/tiffin-plans" },
+    { label: "Grocery", href: "/grocery" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "About Us", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
+
+  const isActive = (href: string) => {
+    return location.pathname === href;
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-green-pale bg-white shadow-sm">
