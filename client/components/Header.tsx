@@ -37,27 +37,38 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-gray-700 hover:text-green-primary transition-colors"
+                to={link.href}
+                className={`text-sm font-medium transition-all duration-200 relative ${
+                  isActive(link.href)
+                    ? "text-green-primary font-bold"
+                    : "text-gray-700 hover:text-green-primary"
+                }`}
               >
                 {link.label}
-              </a>
+                {isActive(link.href) && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-primary" />
+                )}
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Button
-              variant="outline"
-              className="border-green-primary text-green-primary hover:bg-green-pale"
-            >
-              Order Groceries
-            </Button>
-            <Button className="bg-green-primary hover:bg-green-dark text-white">
-              Subscribe Tiffin
-            </Button>
+            <Link to="/grocery">
+              <Button
+                variant="outline"
+                className="border-green-primary text-green-primary hover:bg-green-pale hover:scale-105 transition-transform"
+              >
+                Order Groceries
+              </Button>
+            </Link>
+            <Link to="/tiffin-plans">
+              <Button className="bg-green-primary hover:bg-green-dark text-white hover:scale-105 transition-transform">
+                Subscribe Tiffin
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
