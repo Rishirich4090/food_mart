@@ -69,12 +69,12 @@ export default function Index() {
 
             {/* Right Content - Hero Image */}
             <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-lg">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-primary to-green-dark flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-7xl mb-4">🥗</div>
-                  <p className="text-white font-semibold text-lg">Fresh & Healthy</p>
-                </div>
-              </div>
+              <img
+                src="https://images.pexels.com/photos/12737912/pexels-photo-12737912.jpeg"
+                alt="Fresh tiffin meal with rajma curry, basmati rice, and vegetables"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
             </div>
           </div>
         </div>
