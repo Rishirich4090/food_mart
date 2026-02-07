@@ -14,6 +14,9 @@ import {
   Apple,
   Smartphone,
   ArrowRight,
+  MapPin,
+  Mail,
+  Phone,
 } from "lucide-react";
 
 export default function Index() {
