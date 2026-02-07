@@ -303,6 +303,121 @@ export default function Index() {
         </div>
       </section>
 
+      {/* App Download Section */}
+      <section className="w-full py-16 md:py-24 bg-gradient-to-r from-green-primary to-green-dark text-white overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left - Content */}
+            <div className="space-y-6">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Download Our App
+              </h2>
+              <p className="text-lg text-green-pale">
+                Order on the go, track deliveries in real-time, manage your subscriptions, and get exclusive app-only offers and discounts.
+              </p>
+
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-pale" />
+                  <span>Easy and quick ordering from anywhere</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-pale" />
+                  <span>Real-time delivery tracking with live updates</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-pale" />
+                  <span>Exclusive app-only discounts and offers</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-pale" />
+                  <span>Push notifications for new deals and orders</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-6 h-6 text-green-pale" />
+                  <span>Save favorite orders and meal preferences</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a
+                  href="https://apps.apple.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="h-12 px-6 bg-white text-green-primary hover:bg-green-pale rounded-lg font-semibold flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <Apple className="w-5 h-5" />
+                    App Store
+                  </Button>
+                </a>
+                <a
+                  href="https://play.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="h-12 px-6 bg-white text-green-primary hover:bg-green-pale rounded-lg font-semibold flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <Smartphone className="w-5 h-5" />
+                    Play Store
+                  </Button>
+                </a>
+              </div>
+            </div>
+
+            {/* Right - Phone Mockup with App Screens */}
+            <div className="relative h-96 md:h-full min-h-96 flex items-center justify-center">
+              {/* Phone Frame */}
+              <div className="relative w-64 h-96 rounded-3xl border-8 border-white shadow-2xl bg-black overflow-hidden">
+                {/* Screen Content - Alternating between services */}
+                <div className="w-full h-full bg-gradient-to-b from-green-pale to-white flex flex-col items-center justify-center p-4">
+                  <div className="text-center space-y-4">
+                    <div className="text-6xl animate-bounce mb-4">📱</div>
+                    <div className="text-2xl font-bold text-green-dark">Khana Mart</div>
+                    <div className="text-5xl mb-4">🍱</div>
+                    <div className="font-semibold text-green-dark">Fresh Tiffin & Groceries</div>
+                    <div className="text-sm text-gray-600 mt-4">Order & Track in Real-Time</div>
+                  </div>
+
+                  {/* App Preview Cards */}
+                  <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white flex flex-col items-center justify-center p-4">
+                    <div className="text-5xl mb-3">🥗</div>
+                    <div className="font-bold text-green-dark text-sm text-center">
+                      Fresh Groceries
+                    </div>
+                    <div className="text-xs text-gray-600 mt-2 text-center">
+                      One-time or recurring orders
+                    </div>
+                  </div>
+                </div>
+
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl" />
+              </div>
+
+              {/* Floating Service Cards */}
+              <div className="absolute top-4 -left-12 w-32 bg-white rounded-lg p-4 shadow-lg transform -rotate-12 hover:rotate-0 transition-transform">
+                <div className="text-4xl mb-2 text-center">🍱</div>
+                <p className="text-xs font-semibold text-green-dark text-center">
+                  Daily Tiffin
+                </p>
+                <p className="text-xs text-gray-600 text-center">
+                  Fresh meals delivered
+                </p>
+              </div>
+
+              <div className="absolute bottom-4 -right-12 w-32 bg-white rounded-lg p-4 shadow-lg transform rotate-12 hover:rotate-0 transition-transform">
+                <div className="text-4xl mb-2 text-center">🥦</div>
+                <p className="text-xs font-semibold text-green-dark text-center">
+                  Fresh Groceries
+                </p>
+                <p className="text-xs text-gray-600 text-center">
+                  Best quality items
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section className="w-full py-16 md:py-24 bg-green-pale">
         <div className="container mx-auto px-4">
