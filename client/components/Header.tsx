@@ -56,17 +56,17 @@ export default function Header() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/grocery">
+            <Link to="/login">
               <Button
                 variant="outline"
                 className="border-green-primary text-green-primary hover:bg-green-pale hover:scale-105 transition-transform"
               >
-                Order Groceries
+                Login
               </Button>
             </Link>
-            <Link to="/tiffin-plans">
+            <Link to="/sign-up">
               <Button className="bg-green-primary hover:bg-green-dark text-white hover:scale-105 transition-transform">
-                Subscribe Tiffin
+                Sign Up
               </Button>
             </Link>
           </div>
@@ -104,19 +104,19 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-green-pale">
-                <Link to="/grocery" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
                   <Button
                     variant="outline"
                     className="border-green-primary text-green-primary hover:bg-green-pale w-full hover:scale-105 transition-transform"
                   >
-                    Order Groceries
+                    Login
                   </Button>
                 </Link>
-                <Link to="/tiffin-plans" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/sign-up" onClick={() => setIsMenuOpen(false)}>
                   <Button
                     className="bg-green-primary hover:bg-green-dark text-white w-full hover:scale-105 transition-transform"
                   >
-                    Subscribe Tiffin
+                    Sign Up
                   </Button>
                 </Link>
               </div>

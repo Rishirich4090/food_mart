@@ -9,6 +9,9 @@ import Grocery from "./pages/Grocery";
 import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/ForgotPassword";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -21,6 +24,12 @@ export default function App() {
         <Sonner />
         <BrowserRouter>
           <Routes>
+            {/* Authentication Routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            {/* Main Routes */}
             <Route path="/" element={<Index />} />
             <Route path="/tiffin-plans" element={<TiffinPlans />} />
             <Route path="/grocery" element={<Grocery />} />
