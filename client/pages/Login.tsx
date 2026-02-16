@@ -230,8 +230,8 @@ export default function Login() {
           {/* Floating Image Container */}
           <div className="relative w-80 h-80 animate-float">
             <img
-              src="https://images.pexels.com/photos/5971975/pexels-photo-5971975.jpeg"
-              alt="Fresh lunch box with healthy meals"
+              src="https://images.pexels.com/photos/12725446/pexels-photo-12725446.jpeg"
+              alt="Delivery person with food box"
               className="w-full h-full object-cover rounded-3xl shadow-2xl"
             />
             

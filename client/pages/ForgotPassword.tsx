@@ -355,8 +355,8 @@ export default function ForgotPassword() {
           {/* Floating Image Container */}
           <div className="relative w-80 h-80 animate-float">
             <img
-              src="https://images.pexels.com/photos/5971975/pexels-photo-5971975.jpeg"
-              alt="Fresh lunch box with healthy meals"
+              src="https://images.pexels.com/photos/35241090/pexels-photo-35241090.jpeg"
+              alt="Fresh healthy salad bowl"
               className="w-full h-full object-cover rounded-3xl shadow-2xl"
             />
 
