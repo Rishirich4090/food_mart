@@ -28,7 +28,7 @@ export default function SignUp() {
     if (/[^A-Za-z0-9]/.test(pwd)) strength += 1;
 
     const scores = [
-      { score: 0, label: "", color: "" },
+      { score: 0, label: "", color: "bg-red-500" },
       { score: 1, label: "Weak", color: "bg-red-500" },
       { score: 2, label: "Fair", color: "bg-yellow-500" },
       { score: 3, label: "Good", color: "bg-blue-500" },
@@ -118,35 +118,54 @@ export default function SignUp() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-pale flex items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md text-center">
-          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-8">
-            {/* Success Icon */}
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 border-2 border-green-200 mb-6 mx-auto animate-bounce">
-              <Check className="w-10 h-10 text-green-primary" />
-            </div>
-
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">
-              Account Created! 🎉
-            </h2>
-            <p className="text-gray-600 mb-8">
-              Your Khana Mart account is ready. Healthy meals are waiting for you!
-            </p>
-
-            <div className="space-y-4">
-              <div className="p-4 bg-green-50 rounded-xl border border-green-200">
-                <p className="text-sm text-gray-700">
-                  <span className="font-semibold">Email verification:</span> Check
-                  your inbox for a verification link
-                </p>
+      <div className="min-h-screen flex bg-white">
+        {/* Left Side */}
+        <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 sm:px-8 md:px-12 py-12 animate-fadeInLeft">
+          <div className="w-full max-w-sm">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 border-2 border-green-200 mb-6 animate-bounce">
+                <Check className="w-10 h-10 text-green-primary" />
               </div>
 
-              <Link
-                to="/login"
-                className="w-full inline-block py-3 px-4 bg-gradient-to-r from-green-primary to-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:scale-105 active:scale-95"
-              >
-                Proceed to Login
-              </Link>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
+                Account Created! 🎉
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Your Khana Mart account is ready. Healthy meals are waiting for you!
+              </p>
+
+              <div className="space-y-4">
+                <div className="p-4 bg-green-50 rounded-xl border border-green-200">
+                  <p className="text-sm text-gray-700">
+                    <span className="font-semibold">Email verification:</span> Check
+                    your inbox for a verification link
+                  </p>
+                </div>
+
+                <Link
+                  to="/login"
+                  className="w-full inline-block py-3 px-4 bg-gradient-to-r from-green-primary to-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:scale-105 active:scale-95"
+                >
+                  Proceed to Login
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side */}
+        <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-green-100 via-blue-50 to-green-50 items-center justify-center p-8 relative overflow-hidden animate-fadeInRight">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-green-primary/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse animation-delay-2000" />
+
+          <div className="relative z-10 flex flex-col items-center justify-center space-y-8">
+            <div className="text-center max-w-xs">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                Welcome to Khana Mart
+              </h2>
+              <p className="text-gray-600 text-sm">
+                Start your journey towards healthy, fresh meals delivered daily
+              </p>
             </div>
           </div>
         </div>
@@ -155,22 +174,25 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-pale flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
-        {/* Logo & Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-primary to-green-dark mb-4">
-            <span className="text-2xl font-bold text-white">KM</span>
+    <div className="min-h-screen flex bg-white overflow-hidden">
+      {/* Left Side - Form */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 py-12 animate-fadeInLeft">
+        <div className="w-full max-w-sm mx-auto lg:mx-0">
+          {/* Logo & Header */}
+          <div className="mb-8 md:mb-10">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green-primary to-green-dark mb-4">
+              <span className="text-xl font-bold text-white">KM</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+              Let's get started
+            </h1>
+            <p className="text-gray-600 text-sm md:text-base">
+              Create your Khana Mart account in minutes
+            </p>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Let's get you started
-          </h1>
-          <p className="text-gray-600">Create your Khana Mart account</p>
-        </div>
 
-        {/* Main Form Card */}
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-8 mb-6">
-          <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Error Message */}
             {error && (
               <div className="p-4 bg-red-50 border border-red-200 rounded-xl animate-shake flex items-center gap-3">
@@ -180,78 +202,78 @@ export default function SignUp() {
             )}
 
             {/* Name Field */}
-            <div>
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Full Name
               </label>
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="John Doe"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
               </div>
             </div>
 
             {/* Email Field */}
-            <div>
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="you@example.com"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
               </div>
             </div>
 
             {/* Phone Field */}
-            <div>
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Phone Number
               </label>
               <div className="relative">
-                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder="123-456-7890"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
               </div>
             </div>
 
             {/* Password Field */}
-            <div>
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Password
               </label>
               <div className="relative mb-2">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-primary transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-primary transition-colors hover:scale-110"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -286,24 +308,24 @@ export default function SignUp() {
             </div>
 
             {/* Confirm Password Field */}
-            <div>
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Confirm Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-primary transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-primary transition-colors hover:scale-110"
                 >
                   {showConfirmPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -318,7 +340,7 @@ export default function SignUp() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-4 bg-gradient-to-r from-green-primary to-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-2"
+              className="w-full py-3 px-4 bg-gradient-to-r from-green-primary to-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-green-primary/30 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-6"
             >
               {isLoading ? (
                 <span className="inline-flex items-center gap-2">
@@ -345,19 +367,73 @@ export default function SignUp() {
               )}
             </button>
           </form>
-        </div>
 
-        {/* Login Link */}
-        <div className="text-center">
-          <p className="text-gray-600 font-medium">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="text-green-primary hover:text-green-dark font-semibold transition-colors"
-            >
-              Login
-            </Link>
-          </p>
+          {/* Login Link */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <p className="text-gray-600 font-medium text-center text-sm">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-green-primary hover:text-green-dark font-semibold transition-colors"
+              >
+                Login
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Image */}
+      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-green-100 via-blue-50 to-green-50 items-center justify-center p-8 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-green-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse animation-delay-2000" />
+
+        {/* Main Content */}
+        <div className="relative z-10 flex flex-col items-center justify-center space-y-8 animate-fadeInRight">
+          {/* Floating Image Container */}
+          <div className="relative w-80 h-80 animate-float">
+            <img
+              src="https://images.pexels.com/photos/30004063/pexels-photo-30004063.jpeg"
+              alt="Sign up illustration"
+              className="w-full h-full object-cover rounded-3xl shadow-2xl"
+            />
+
+            {/* Floating Cards */}
+            <div className="absolute -bottom-6 -left-8 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-1000">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-primary/10 flex items-center justify-center">
+                  <User className="w-5 h-5 text-green-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-900">Easy Setup</p>
+                  <p className="text-xs text-gray-600">Takes 2 minutes</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -top-4 -right-8 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-500">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-primary/10 flex items-center justify-center">
+                  <Check className="w-5 h-5 text-green-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-900">Verified</p>
+                  <p className="text-xs text-gray-600">100% safe & secure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Description Text */}
+          <div className="text-center max-w-xs">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Join Our Community
+            </h2>
+            <p className="text-gray-600 text-sm">
+              Be part of thousands of happy customers enjoying fresh, healthy meals
+            </p>
+          </div>
         </div>
       </div>
 
@@ -369,6 +445,56 @@ export default function SignUp() {
         }
         .animate-shake {
           animation: shake 0.5s;
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .animate-fadeInLeft {
+          animation: fadeInLeft 0.7s ease-out;
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .animate-fadeInRight {
+          animation: fadeInRight 0.7s ease-out 0.2s backwards;
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animation-delay-500 {
+          animation-delay: 0.5s !important;
+        }
+        .animation-delay-1000 {
+          animation-delay: 1s !important;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s !important;
         }
       `}</style>
     </div>

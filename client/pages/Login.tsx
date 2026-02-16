@@ -40,26 +40,30 @@ export default function Login() {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      // Here you would normally make an API call
       console.log({ email, password, rememberMe });
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-pale flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
-        {/* Logo & Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-primary to-green-dark mb-4">
-            <span className="text-2xl font-bold text-white">KM</span>
+    <div className="min-h-screen flex bg-white overflow-hidden">
+      {/* Left Side - Form */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 py-12 animate-fadeInLeft">
+        <div className="w-full max-w-sm mx-auto lg:mx-0">
+          {/* Logo & Header */}
+          <div className="mb-8 md:mb-12">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-green-primary to-green-dark mb-4">
+              <span className="text-xl font-bold text-white">KM</span>
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+              Welcome Back
+            </h1>
+            <p className="text-gray-600 text-sm md:text-base">
+              Welcome back. Please enter your details
+            </p>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back 👋</h1>
-          <p className="text-gray-600">Login to continue your meals</p>
-        </div>
 
-        {/* Main Form Card */}
-        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 p-8 mb-6">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Form Card */}
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Error Message */}
             {error && (
               <div className="p-4 bg-red-50 border border-red-200 rounded-xl animate-shake">
@@ -68,12 +72,12 @@ export default function Login() {
             )}
 
             {/* Email Field */}
-            <div className="relative">
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Email Address
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type="email"
                   value={email}
@@ -81,19 +85,19 @@ export default function Login() {
                     setEmail(e.target.value);
                     setError("");
                   }}
-                  placeholder="you@example.com"
-                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  placeholder="Enter your email"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
               </div>
             </div>
 
             {/* Password Field */}
-            <div className="relative">
+            <div className="relative group">
               <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-green-primary pointer-events-none transition-all group-focus-within:scale-110" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
@@ -102,12 +106,12 @@ export default function Login() {
                     setError("");
                   }}
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white"
+                  className="w-full pl-12 pr-12 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-gray-900 placeholder-gray-500 transition-all focus:outline-none focus:ring-2 focus:ring-green-primary/30 focus:border-green-primary focus:bg-white hover:border-green-primary/50"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-primary transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-green-primary transition-colors hover:scale-110"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -119,7 +123,7 @@ export default function Login() {
             </div>
 
             {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between pt-2">
               <label className="flex items-center gap-2 cursor-pointer group">
                 <input
                   type="checkbox"
@@ -131,7 +135,7 @@ export default function Login() {
               </label>
               <Link
                 to="/forgot-password"
-                className="text-sm font-medium text-green-primary hover:text-green-dark transition-colors"
+                className="text-sm font-medium text-green-primary hover:text-green-dark transition-colors hover:underline"
               >
                 Forgot password?
               </Link>
@@ -141,7 +145,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-4 bg-gradient-to-r from-green-primary to-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full py-3 px-4 bg-gradient-to-r from-green-primary to-green-dark text-white font-semibold rounded-xl transition-all hover:shadow-lg hover:shadow-green-primary/30 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 mt-4"
             >
               {isLoading ? (
                 <span className="inline-flex items-center gap-2">
@@ -164,7 +168,7 @@ export default function Login() {
                   Logging in...
                 </span>
               ) : (
-                "Login"
+                "Continue"
               )}
             </button>
           </form>
@@ -175,7 +179,9 @@ export default function Login() {
               <div className="w-full border-t border-gray-200" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-gray-600 font-medium">OR</span>
+              <span className="px-2 bg-white text-gray-600 font-medium">
+                Or Continue With
+              </span>
             </div>
           </div>
 
@@ -183,33 +189,87 @@ export default function Login() {
           <div className="space-y-3">
             <button
               type="button"
-              className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-gray-100 text-gray-900 font-semibold transition-all hover:shadow-lg hover:border-green-primary/30 group"
+              className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-900 font-semibold transition-all hover:shadow-md hover:border-green-primary/30 group hover:scale-105 active:scale-95"
             >
               <Chrome className="w-5 h-5 text-blue-600 group-hover:scale-110 transition-transform" />
-              <span>Continue with Google</span>
+              <span>Google</span>
             </button>
 
             <button
               type="button"
-              className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-gray-200 bg-gray-50/50 hover:bg-gray-100 text-gray-900 font-semibold transition-all hover:shadow-lg hover:border-green-primary/30 group"
+              className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-900 font-semibold transition-all hover:shadow-md hover:border-green-primary/30 group hover:scale-105 active:scale-95"
             >
               <Phone className="w-5 h-5 text-green-primary group-hover:scale-110 transition-transform" />
-              <span>Login with Phone OTP</span>
+              <span>Phone OTP</span>
             </button>
           </div>
-        </div>
 
-        {/* Sign Up Link */}
-        <div className="text-center">
-          <p className="text-gray-600 font-medium">
-            Don't have an account?{" "}
-            <Link
-              to="/sign-up"
-              className="text-green-primary hover:text-green-dark font-semibold transition-colors"
-            >
-              Sign Up
-            </Link>
-          </p>
+          {/* Sign Up Link */}
+          <div className="mt-8 pt-6 border-t border-gray-200">
+            <p className="text-gray-600 font-medium text-center text-sm">
+              Don't have an account?{" "}
+              <Link
+                to="/sign-up"
+                className="text-green-primary hover:text-green-dark font-semibold transition-colors"
+              >
+                Sign up here
+              </Link>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right Side - Image */}
+      <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-blue-100 via-green-50 to-blue-50 items-center justify-center p-8 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-green-primary/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-pulse animation-delay-2000" />
+
+        {/* Main Image */}
+        <div className="relative z-10 flex flex-col items-center justify-center space-y-8 animate-fadeInRight">
+          {/* Floating Image Container */}
+          <div className="relative w-80 h-80 animate-float">
+            <img
+              src="https://images.pexels.com/photos/30004063/pexels-photo-30004063.jpeg"
+              alt="Login illustration"
+              className="w-full h-full object-cover rounded-3xl shadow-2xl"
+            />
+            
+            {/* Floating Cards */}
+            <div className="absolute -bottom-6 -left-8 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-1000">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-primary/10 flex items-center justify-center">
+                  <Lock className="w-5 h-5 text-green-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-900">Secure</p>
+                  <p className="text-xs text-gray-600">Bank-level security</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -top-4 -right-8 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-500">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-green-primary/10 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-green-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-900">Email</p>
+                  <p className="text-xs text-gray-600">Verified & verified</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Description Text */}
+          <div className="text-center max-w-xs">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Fresh Meals, Secure Access
+            </h2>
+            <p className="text-gray-600 text-sm">
+              Join thousands of users enjoying fresh, healthy meals delivered to your doorstep
+            </p>
+          </div>
         </div>
       </div>
 
@@ -221,6 +281,56 @@ export default function Login() {
         }
         .animate-shake {
           animation: shake 0.5s;
+        }
+
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .animate-fadeInLeft {
+          animation: fadeInLeft 0.7s ease-out;
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        .animate-fadeInRight {
+          animation: fadeInRight 0.7s ease-out 0.2s backwards;
+        }
+
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animation-delay-500 {
+          animation-delay: 0.5s !important;
+        }
+        .animation-delay-1000 {
+          animation-delay: 1s !important;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s !important;
         }
       `}</style>
     </div>
