@@ -1,14 +1,24 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Eye, EyeOff, Mail, Lock, Chrome, Phone } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Eye, EyeOff, Mail, Lock, Chrome, Phone, Copy, Check } from "lucide-react";
+
+// Dummy users database
+const DUMMY_USERS = [
+  { email: "demo@khanamart.com", password: "Demo@123", name: "Demo User" },
+  { email: "test@khanamart.com", password: "Test@123", name: "Test User" },
+  { email: "user@example.com", password: "User@123", name: "Example User" },
+];
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
 
   const validateForm = () => {
     if (!email) {
@@ -39,10 +49,59 @@ export default function Login() {
     setIsLoading(true);
     // Simulate API call
     setTimeout(() => {
+      // Check against dummy users
+      const user = DUMMY_USERS.find(
+        (u) => u.email === email && u.password === password
+      );
+
+      if (user) {
+        // Store user in localStorage
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({ email: user.email, name: user.name })
+        );
+        setSuccess(true);
+        setError("");
+        // Redirect after showing success
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+      } else {
+        setError("Invalid email or password. Please check your credentials.");
+      }
+
       setIsLoading(false);
-      console.log({ email, password, rememberMe });
     }, 1000);
   };
+
+  const handleCopyCredential = (text: string, type: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(type);
+    setTimeout(() => setCopied(null), 2000);
+  };
+
+  if (success) {
+    return (
+      <div className="min-h-screen flex bg-white overflow-hidden">
+        <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-12 py-12">
+          <div className="w-full max-w-sm mx-auto lg:mx-0">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-primary/10 mb-6 animate-bounce">
+                <Check className="w-10 h-10 text-green-primary" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                Login Successful!
+              </h2>
+              <p className="text-gray-600 mb-8">
+                Welcome back. Redirecting you to home...
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-blue-100 via-green-50 to-blue-50" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex bg-white overflow-hidden">
@@ -60,6 +119,56 @@ export default function Login() {
             <p className="text-gray-600 text-sm md:text-base">
               Welcome back. Please enter your details
             </p>
+          </div>
+
+          {/* Demo Credentials Section */}
+          <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+            <p className="text-xs font-semibold text-blue-900 mb-3">
+              Demo Credentials for Testing:
+            </p>
+            <div className="space-y-2">
+              {DUMMY_USERS.map((user, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-2 bg-white rounded-lg border border-blue-100 group hover:border-blue-300 transition-all"
+                >
+                  <div className="min-w-0">
+                    <p className="text-xs font-medium text-gray-900 truncate">
+                      {user.email}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      {user.password}
+                    </p>
+                  </div>
+                  <div className="flex gap-1 ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                      type="button"
+                      onClick={() => handleCopyCredential(user.email, `email-${index}`)}
+                      className="p-1 rounded hover:bg-gray-100 transition-colors"
+                      title="Copy email"
+                    >
+                      {copied === `email-${index}` ? (
+                        <Check className="w-4 h-4 text-green-600" />
+                      ) : (
+                        <Copy className="w-4 h-4 text-gray-500" />
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleCopyCredential(user.password, `pass-${index}`)}
+                      className="p-1 rounded hover:bg-gray-100 transition-colors"
+                      title="Copy password"
+                    >
+                      {copied === `pass-${index}` ? (
+                        <Check className="w-4 h-4 text-green-600" />
+                      ) : (
+                        <Copy className="w-4 h-4 text-gray-500" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Form Card */}
@@ -168,7 +277,7 @@ export default function Login() {
                   Logging in...
                 </span>
               ) : (
-                "Continue"
+                "Login"
               )}
             </button>
           </form>
